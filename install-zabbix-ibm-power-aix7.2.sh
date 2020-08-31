@@ -1,7 +1,7 @@
 #!/bin/ksh
 
   
-# curl -s https://raw.githubusercontent.com/pedroaugustoferreira/service-amazonas-/master/install-zabbix-ibm-power-suse.sh | bash -s --
+# curl -s https://raw.githubusercontent.com/pedroaugustoferreira/service-amazonas-/master/install-zabbix-ibm-power-aix7.2.sh | bash -s --
 
 mkdir /tmp/zabbix_install
 cd /tmp/zabbix_install
