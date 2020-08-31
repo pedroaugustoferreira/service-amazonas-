@@ -6,11 +6,13 @@
 mkdir /tmp/zabbix_install
 cd /tmp/zabbix_install
 
+ps -ef|grep [z]abbix_agentd|awk '{print "kill -9 "$2}'|sh
+
 wget https://www.zabbix.com/downloads/4.0.7/zabbix_agent-4.0.7-aix-7.2-powerpc-openssl.tar.gz
 
-gzip -d zabbix_agent-4.2.1-aix-7.2-powerpc-openssl.tar.gz
+gzip -d zabbix_agent-4.0.7-aix-7.2-powerpc-openssl.tar.gz
 
-tar -xf zabbix_agent-4.2.1-aix-7.2-powerpc-openssl.tar
+tar -xf zabbix_agent-4.0.7-aix-7.2-powerpc-openssl.tar
 
 #create zabbix group
 mkgroup zabbix
