@@ -1,3 +1,5 @@
+# curl -s https://raw.githubusercontent.com/pedroaugustoferreira/service-amazonas-/master/install-zabbix-ibm-power-suse.sh | bash -s --
+
 rpm -Uvh --nosignature https://rpmfind.net/linux/opensuse/ports/ppc/distribution/leap/15.2/repo/oss/ppc64le/libopenssl1_1-1.1.1d-lp152.6.10.ppc64le.rpm
 rpm -ivh --nosignature http://download.opensuse.org/repositories/server:/monitoring/openSUSE_Factory_PowerPC_standard/ppc64le/zabbix-agent-4.0.23-32.1.ppc64le.rpm
 
