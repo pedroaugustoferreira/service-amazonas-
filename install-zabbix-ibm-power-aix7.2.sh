@@ -3,8 +3,7 @@
 mkdir /tmp/zabbix_install
 cd /tmp/zabbix_install
 
-wget https://www.zabbix.com/downloads/4.2.1/zabbix_agent-4.2.1-aix-7.2-powerpc-o
-penssl.tar.gz
+wget https://www.zabbix.com/downloads/4.0.7/zabbix_agent-4.0.7-aix-7.2-powerpc-openssl.tar.gz
 
 gzip -d zabbix_agent-4.2.1-aix-7.2-powerpc-openssl.tar.gz
 
