@@ -7,6 +7,8 @@ rm -rf /tmp/zabbix_install
 mkdir /tmp/zabbix_install
 cd /tmp/zabbix_install
 
+exit 1
+
 ps -ef|grep [z]abbix_agentd|awk '{print "kill -9 "$2}'|sh
 
 wget https://www.zabbix.com/downloads/4.0.7/zabbix_agent-4.0.7-aix-7.2-powerpc-openssl.tar.gz
