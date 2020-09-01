@@ -1,6 +1,6 @@
 
 #!/bin/ksh
-# curl -s https://raw.githubusercontent.com/pedroaugustoferreira/service-amazonas-/master/install-zabbix-ibm-power-aix7.2.sh | bash -s --
+# curl -s https://raw.githubusercontent.com/pedroaugustoferreira/service-amazonas-/master/oracle_tuning.sh | bash -s --
 
 cat > /usr/bin/oracle_tuning.sh << EOF
 #!/usr/bin/ksh
