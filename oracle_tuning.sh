@@ -4,13 +4,12 @@
 
 cat > /usr/bin/oracle_tuning.sh << EOF
 #!/usr/bin/ksh
-/usr/sbin/no -o udp_sendspace=65536
-/usr/sbin/no -o udp_recvspace=655360
-/usr/sbin/no -o tcp_sendspace=65536
-/usr/sbin/no -o tcp_recvspace=65536
-/usr/sbin/no -o rfc1323=1
-/usr/sbin/no -o sb_max=4194304
-/usr/sbin/no -o ipqmaxlen=512
+chdev -l en0 -a tcp_sendspace=65536
+chdev -l en0 -a tcp_recvspace=65536
+chdev -l en0 -a rfc1323=1
+chdev -l en1 -a tcp_sendspace=65536
+chdev -l en1 -a tcp_recvspace=65536
+chdev -l en1 -a rfc1323=1
 stopsrc -s xntpd;startsrc -s xntpd
 EOF
 
@@ -23,3 +22,44 @@ chmod 660 /dev/rdiskASM*
 ls -l /dev/rdiskASM*
 
 
+exit 1
+vi /etc/security/limits
+root:
+        nofiles = -1  
+        nofiles_hard = -1   
+        nproc = -1
+        nproc_hard = -1
+        stack = -1   
+        stack_hard = -1   
+        fsize = -1
+        cpu = -1
+        data = -1
+        rss = -1
+        fsize_hard = -1   
+        core = -1
+        threads = -1
+        cpu_hard = -1
+        data_hard = -1
+        core_hard = -1
+        rss_hard = -1
+        threads_hard = -1
+        
+oracle:
+        nofiles = -1  
+        nofiles_hard = -1   
+        nproc = -1
+        nproc_hard = -1
+        stack = -1   
+        stack_hard = -1   
+        fsize = -1
+        cpu = -1
+        data = -1
+        rss = -1
+        fsize_hard = -1   
+        core = -1
+        threads = -1
+        cpu_hard = -1
+        data_hard = -1
+        core_hard = -1
+        rss_hard = -1
+        threads_hard = -1
