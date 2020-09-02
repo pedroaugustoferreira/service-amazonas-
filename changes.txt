@@ -1,6 +1,6 @@
 varyonvg vg_app
-lsps -a
 swapon /dev/paging00
+lsps -a
 mount -a
 
 
