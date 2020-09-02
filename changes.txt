@@ -9,3 +9,5 @@ mkgroup -'A' id='54321' oinstall
 mkgroup -'A' id='54322' dba
 useradd -d /home/oracle -e 0 -g oinstall -G oinstall,dba -m -u 54321 oracle
 
+lspv|grep diskASM| awk '{print "chdev -l " $1 " -a reserve_policy=no_reserve"}'|sh
+
