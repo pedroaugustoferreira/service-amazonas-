@@ -1,4 +1,4 @@
-varyonvg vg_u01
+varyonvg vg_app
 lsps -a
 swapon /dev/paging00
 mount -a
