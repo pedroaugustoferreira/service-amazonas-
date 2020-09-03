@@ -12,3 +12,8 @@ useradd -d /home/oracle -e 0 -g oinstall -G oinstall,dba -m -u 54321 oracle
 lspv|grep diskASM| awk '{print "chdev -l " $1 " -a reserve_policy=no_reserve"}'|sh
 chown oracle:dba /dev/rdiskASM*;chmod 660 /dev/rdiskASM*;ls -l /dev/rdiskASM*
 
+
+bosboot -ad /dev/ipldevice
+bosboot -ad /dev/hdisk0
+bootlist -m normal hdisk0
+bootlist -m normal -o
