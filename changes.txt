@@ -1,5 +1,7 @@
 lspath -HF "name;connection;parent;path_status;status"|grep Missing|awk -F";" '{print "rmpath -dl "$1" -p " $3 " -w "$2}'|sh
 
+mkps -a -n -s4 newvg
+
 varyonvg vg_app
 swapon /dev/paging00
 lsps -a
@@ -12,9 +14,10 @@ useradd -d /home/oracle -e 0 -g oinstall -G oinstall,dba -m -u 54321 oracle
 lspv|grep diskASM| awk '{print "chdev -l " $1 " -a reserve_policy=no_reserve"}'|sh
 chown oracle:dba /dev/rdiskASM*;chmod 660 /dev/rdiskASM*;ls -l /dev/rdiskASM*
 
-
+bootlist -m normal -o
 bosboot -ad /dev/ipldevice
-lspv|grep rootvg|awk '{print "bosboot -ad /dev/"$1}'|sh
+bosboot -ad /dev/hdisk0
 lspv|grep rootvg
 bootlist -m normal hdisk0
 bootlist -m normal -o
+
