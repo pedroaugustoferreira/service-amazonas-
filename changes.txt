@@ -14,6 +14,7 @@ chown oracle:dba /dev/rdiskASM*;chmod 660 /dev/rdiskASM*;ls -l /dev/rdiskASM*
 
 
 bosboot -ad /dev/ipldevice
-bosboot -ad /dev/hdisk0
+lspv|grep rootvg|awk '{print "bosboot -ad /dev/"$1}'|sh
+lspv|grep rootvg
 bootlist -m normal hdisk0
 bootlist -m normal -o
