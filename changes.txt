@@ -62,6 +62,7 @@ swapon /dev/paging00
 chdev -l en0 -a tcp_sendspace=65536
 chdev -l en0 -a tcp_recvspace=65536
 chdev -l en0 -a rfc1323=1
-
+df -Ig
+echo ok
 
 
