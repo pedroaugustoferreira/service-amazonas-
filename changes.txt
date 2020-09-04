@@ -21,3 +21,28 @@ lspv|grep rootvg
 bootlist -m normal hdisk0
 bootlist -m normal -o
 
+
+cat > hdisk_migrate.sh << EOF
+#!/usr/bin/ksh
+set -x
+HDISK_ROOT_ATUAL=hdisk2
+HDISK_ROOT_NOVO=hdisk0
+lspv
+extendvg rootvg $HDISK_ROOT_NOVO
+mirrorvg rootvg $HDISK_ROOT_NOVO
+unmirrorvg rootvg $HDISK_ROOT_ATUAL
+lspv -l $HDISK_ROOT_ATUAL|egrep -v "$HDISK_ROOT_ATUAL|LV NAME"|awk '{print "migratepv -l "$1" '$HDISK_ROOT_ATUAL' '$HDISK_ROOT_NOVO'"}'|sh
+lspv -l $HDISK_ROOT_ATUAL
+reducevg rootvg $HDISK_ROOT_ATUAL
+lspv | grep rootvg
+bosboot -ad /dev/ipldevice
+bosboot -a -d $HDISK_ROOT_NOVO
+bootlist -m normal $HDISK_ROOT_NOVO
+rmdev -dl $HDISK_ROOT_ATUAL
+EOF
+sh hdisk_migrate.sh
+rm -rf hdisk_migrate.sh
+echo ok
+
+
+lspath -HF "name;connection;parent;path_status;status"|grep Missing|awk -F";" '{print "rmpath -dl "$1" -p " $3 " -w "$2}'|sh
