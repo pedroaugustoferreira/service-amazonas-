@@ -21,6 +21,9 @@ lspv|grep rootvg
 bootlist -m normal hdisk0
 bootlist -m normal -o
 
+rmdev -dl hdisk0
+rmdev -dl hdisk1
+cfgmgr
 
 cat > hdisk_migrate.sh << EOF
 #!/usr/bin/ksh
@@ -56,5 +59,9 @@ cfgmgr
 varyonvg vg_app
 mount -a
 swapon /dev/paging00
+chdev -l en0 -a tcp_sendspace=65536
+chdev -l en0 -a tcp_recvspace=65536
+chdev -l en0 -a rfc1323=1
+
 
 
