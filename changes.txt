@@ -39,6 +39,9 @@ bosboot -ad /dev/ipldevice
 bosboot -a -d $HDISK_ROOT_NOVO
 bootlist -m normal $HDISK_ROOT_NOVO
 rmdev -dl $HDISK_ROOT_ATUAL
+rmdev -dl ent1
+rmdev -dl en1
+rmdev -dl et1
 EOF
 sh hdisk_migrate.sh
 rm -rf hdisk_migrate.sh
@@ -46,3 +49,4 @@ echo ok
 
 
 lspath -HF "name;connection;parent;path_status;status"|grep Missing|awk -F";" '{print "rmpath -dl "$1" -p " $3 " -w "$2}'|sh
+
