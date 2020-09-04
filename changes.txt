@@ -27,6 +27,8 @@ cat > hdisk_migrate.sh << EOF
 set -x
 HDISK_ROOT_ATUAL=hdisk2
 HDISK_ROOT_NOVO=hdisk0
+HOSTNAME=DBTHEMISPRD01
+IP=10.80.0.95
 lspv
 extendvg rootvg $HDISK_ROOT_NOVO
 mirrorvg rootvg $HDISK_ROOT_NOVO
@@ -42,6 +44,7 @@ rmdev -dl $HDISK_ROOT_ATUAL
 rmdev -dl ent1
 rmdev -dl en1
 rmdev -dl et1
+mktcpip -h $HOSTNAME -a $IP -m 255.255.255.0 -i en0 -s -C 0 -A no
 EOF
 sh hdisk_migrate.sh
 rm -rf hdisk_migrate.sh
