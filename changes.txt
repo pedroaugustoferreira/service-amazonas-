@@ -36,7 +36,7 @@ lspv
 extendvg rootvg \$HDISK_ROOT_NOVO
 mirrorvg rootvg \$HDISK_ROOT_NOVO
 unmirrorvg rootvg \$HDISK_ROOT_ATUAL
-lspv -l \$HDISK_ROOT_ATUAL|egrep -v "\$HDISK_ROOT_ATUAL|LV NAME"|awk '{print "migratepv -l "$1" '\$HDISK_ROOT_ATUAL' '\$HDISK_ROOT_NOVO'"}'|sh
+lspv -l \$HDISK_ROOT_ATUAL|egrep -v "\$HDISK_ROOT_ATUAL|LV NAME"|awk '{print "migratepv -l "\$1" '\$HDISK_ROOT_ATUAL' '\$HDISK_ROOT_NOVO'"}'|sh
 lspv -l \$HDISK_ROOT_ATUAL
 reducevg rootvg \$HDISK_ROOT_ATUAL
 lspv | grep rootvg
