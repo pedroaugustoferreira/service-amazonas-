@@ -30,24 +30,24 @@ cat > hdisk_migrate.sh << EOF
 set -x
 HDISK_ROOT_ATUAL=hdisk2
 HDISK_ROOT_NOVO=hdisk0
-HOSTNAME=DBTHEMISPRD01
-IP=10.80.0.95
+HOSTNAME=DBFOLHAPRD01
+IP=10.80.0.92
 lspv
-extendvg rootvg $HDISK_ROOT_NOVO
-mirrorvg rootvg $HDISK_ROOT_NOVO
-unmirrorvg rootvg $HDISK_ROOT_ATUAL
-lspv -l $HDISK_ROOT_ATUAL|egrep -v "$HDISK_ROOT_ATUAL|LV NAME"|awk '{print "migratepv -l "$1" '$HDISK_ROOT_ATUAL' '$HDISK_ROOT_NOVO'"}'|sh
-lspv -l $HDISK_ROOT_ATUAL
-reducevg rootvg $HDISK_ROOT_ATUAL
+extendvg rootvg \$HDISK_ROOT_NOVO
+mirrorvg rootvg \$HDISK_ROOT_NOVO
+unmirrorvg rootvg \$HDISK_ROOT_ATUAL
+lspv -l \$HDISK_ROOT_ATUAL|egrep -v "\$HDISK_ROOT_ATUAL|LV NAME"|awk '{print "migratepv -l "$1" '\$HDISK_ROOT_ATUAL' '\$HDISK_ROOT_NOVO'"}'|sh
+lspv -l \$HDISK_ROOT_ATUAL
+reducevg rootvg \$HDISK_ROOT_ATUAL
 lspv | grep rootvg
 bosboot -ad /dev/ipldevice
-bosboot -a -d $HDISK_ROOT_NOVO
-bootlist -m normal $HDISK_ROOT_NOVO
-rmdev -dl $HDISK_ROOT_ATUAL
+bosboot -a -d \$HDISK_ROOT_NOVO
+bootlist -m normal \$HDISK_ROOT_NOVO
+rmdev -dl \$HDISK_ROOT_ATUAL
 rmdev -dl ent1
 rmdev -dl en1
 rmdev -dl et1
-mktcpip -h $HOSTNAME -a $IP -m 255.255.255.0 -i en0 -s -C 0 -A no
+mktcpip -h \$HOSTNAME -a \$IP -m 255.255.255.0 -i en0 -s -C 0 -A no
 EOF
 sh hdisk_migrate.sh
 rm -rf hdisk_migrate.sh
