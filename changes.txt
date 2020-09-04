@@ -52,4 +52,9 @@ echo ok
 
 
 lspath -HF "name;connection;parent;path_status;status"|grep Missing|awk -F";" '{print "rmpath -dl "$1" -p " $3 " -w "$2}'|sh
+cfgmgr
+varyonvg vg_app
+mount -a
+swapon /dev/paging00
+
 
