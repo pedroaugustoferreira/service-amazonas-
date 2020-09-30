@@ -23,10 +23,10 @@ mkgroup zabbix
 mkuser pgrp='zabbix' groups='zabbix' zabbix
 
 #make configuration directory
-mkdir /etc/zabbix
+mkdir -p /etc/zabbix
 
 #make log directory
-mkdir /var/log/zabbix/
+mkdir -p /var/log/zabbix/
 
 #log directory belongs to user zabbix and group zabbix
 chown -R zabbix:zabbix /var/log/zabbix/
